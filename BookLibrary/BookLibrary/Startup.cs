@@ -27,7 +27,7 @@ namespace BookLibrary
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseMySQL("server = localhost; database = library; user = root; SslMode = none"));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(option =>
                 {
@@ -44,6 +44,8 @@ namespace BookLibrary
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+
+            //services.AddDbContext<ApplicationDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,7 +5,11 @@
 @inject UserManager<ApplicationUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
-{
+{   
+    <ul class="nav navbar-nav navbar-left">
+        <li><a asp-area="" asp-controller="Book" asp-action="Index">Books</a></li>
+    </ul>
+
     <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>

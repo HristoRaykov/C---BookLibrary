@@ -13,6 +13,14 @@ namespace BookLibrary.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            this.Database.EnsureCreated();
+        }
+
+        public DbSet<Book> Books { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySQL("server=localhost;database=library;user=root;SslMode=none");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
